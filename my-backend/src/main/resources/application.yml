@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: catalog-service
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    database: mysql
+    defer-datasource-initialization: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:13306/mydb
+    username: root
+    password:
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    com.example.catalogservice: DEBUG
