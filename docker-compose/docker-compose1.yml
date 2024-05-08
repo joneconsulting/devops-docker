@@ -1,7 +1,0 @@
-version: "3"
-services:
-  my-db:
-    platform: linux/amd64 # for apple chip
-    image: nginx:latest
-    ports:
-      - 80:80

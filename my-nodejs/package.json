@@ -1,0 +1,19 @@
+{
+    "name": "example",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "build": "babel app.js -d dist",
+        "serve": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.19.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.18.10",
+        "@babel/core": "7.19.1",
+        "@babel/node": "7.19.1",
+        "@babel/preset-env": "7.19.1",
+        "@babel/runtime": "7.12.5"
+    }
+}
