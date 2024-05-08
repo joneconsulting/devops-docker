@@ -1,0 +1,67 @@
+version: "3.7"
+services: 
+  # registry:
+  #   container_name: registry
+  #   image: registry:latest
+  #   ports: 
+  #     - 5000:5000
+  #   volumes: 
+  #     - "./registry-data:/var/lib/registry"
+
+  manager:
+    container_name: manager
+    image: edowon0623/docker-server:m1
+    privileged: true
+    tty: true
+    ports:
+      - 8000:80
+      - 9000:9000
+    # depends_on: 
+    #   - registry
+    expose: 
+      - 3375
+    command: "--insecure-registry registry:5000"
+    environment:
+      - container=docker
+    volumes: 
+      - "./stack:/stack"
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroup: host
+
+  worker1:
+    container_name: worker1
+    image: edowon0623/docker-server:m1
+    privileged: true
+    tty: true
+    depends_on: 
+      - manager
+      # - registry
+    expose: 
+      - 7946
+      - 7946/udp
+      - 4789/udp
+    command: "--insecure-registry registry:5000"
+    environment:
+      - container=docker
+    volumes: 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroup: host
+
+  worker2:
+    container_name: worker2
+    image: edowon0623/docker-server:m1
+    privileged: true
+    tty: true
+    depends_on: 
+      - manager
+      # - registry
+    expose: 
+      - 7946
+      - 7946/udp
+      - 4789/udp
+    command: "--insecure-registry registry:5000"
+    environment:
+      - container=docker
+    volumes: 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroup: host

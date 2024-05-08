@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  nginx:
+    image: nginx
+    deploy:  
+      replicas: 2
+      placement:
+        constraints: [node.role == worker]
+      restart_policy:
+        condition: on-failure
+        max_attempts: 2
+    environment:
+      SERVICE_PORTS: 80
+    networks:
+      - my-overlay-network
+
+  proxy:
+    image: haproxy
+    depends_on:
+      - nginx
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports: # attach on ingress network 1
+      - "80:80"
+    networks: # attach on web network 2 - nginx connect
+      - my-overlay-network
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+networks: 
+  my-overlay-network: 
+    external: true
