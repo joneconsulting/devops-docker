@@ -16,12 +16,13 @@ services:
       - my-overlay-network
 
   proxy:
-    image: haproxy
+    # image: dockercloud/haproxy
+    image: haproxy:latest
     depends_on:
       - nginx
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - /stack/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports: # attach on ingress network 1
       - "80:80"
     networks: # attach on web network 2 - nginx connect
