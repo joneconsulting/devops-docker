@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.7'
 
 services:
   nginx:
@@ -10,6 +10,8 @@ services:
       restart_policy:
         condition: on-failure
         max_attempts: 2
+    ports: # attach on ingress network 1
+      - "8088:80"
     environment:
       SERVICE_PORTS: 80
     networks:
