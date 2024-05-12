@@ -1,16 +1,11 @@
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
+
     <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
-        <!-- run on windows or macos -->
-<!--        <syslogHost>172.17.0.3</syslogHost>-->
-<!--        <port>514</port>-->
-
-        <!-- run on docker-compose -->
-        <syslogHost>syslog-ng</syslogHost>
-        <port>5514</port>
-
+        <syslogHost>192.168.0.33</syslogHost>
         <facility>LOCAL0</facility>
+        <port>514</port>
         <throwableExcluded>true</throwableExcluded>
-        <suffixPattern>>catalog-service %m thread:%t priority:%p category:%c exception:%exception</suffixPattern>
+        <suffixPattern>catalog-service %m thread:%t priority:%p category:%c exception:%exception</suffixPattern>
     </appender>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -23,6 +18,6 @@
 
     <root level="debug">
         <appender-ref ref="STDOUT" />
-<!--        <appender-ref ref="SYSLOG" />-->
+        <appender-ref ref="SYSLOG" />
     </root>
 </configuration>

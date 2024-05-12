@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>catalog-service-mariadb</artifactId>
+    <artifactId>catalog-service-syslog</artifactId>
     <version>1.0</version>
     <name>catalog-service</name>
     <description>Demo project for Spring Boot</description>

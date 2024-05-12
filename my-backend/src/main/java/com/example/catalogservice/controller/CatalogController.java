@@ -32,7 +32,7 @@ public class CatalogController {
 
     @GetMapping("/catalogs")
     public ResponseEntity<List<ResponseCatalog>> getCatalogs() {
-        log.info("[called catalogs]", "MY-MESSAGE");
+        log.debug("[called catalogs]", "MY-MESSAGE");
 
         Iterable<CatalogEntity> catalogList = catalogService.getAllCatalogs();
 
@@ -41,7 +41,7 @@ public class CatalogController {
             result.add(new ModelMapper().map(v, ResponseCatalog.class));
         });
 
-        log.info("[catalog size={}]", result.size());
+        log.debug("[catalog size={}]", result.size());
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
