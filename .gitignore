@@ -5,3 +5,4 @@ my-backend/target/
 my-frontend/node_modules/
 my-frontend/build/
 
+catalog-service-syslog-1.0.jar
