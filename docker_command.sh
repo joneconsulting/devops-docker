@@ -1,4 +1,4 @@
-docker network create -driver bridge my-network
+docker network create --driver bridge my-network
 
 docker run -d -p 13306:3306 --network my-network \
         -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true \
