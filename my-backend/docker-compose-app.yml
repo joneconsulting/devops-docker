@@ -24,14 +24,16 @@ services:
       - 601:6601/tcp
       - 6514:6514/tcp
     restart: unless-stopped
-    # networks:
-    #   - my-network
+    networks:
+      - my-network
     
   my-backend:
-    image: edowon0623/catalog-service:syslog
+    image: edowon0623/catalog-service:syslog-ng-v1.3
     environment: 
       - spring.datasource.url=jdbc:mariadb://my-db:3306/mydb
       - spring.datasource.password=
+      - DOCKER-COMPOSE-SYSLOG-ADDRESS=syslog-ng
+      - DOCKER-COMPOSE-SYSLOG-PORT=5514
     ports:
       - 8088:8088
     depends_on:

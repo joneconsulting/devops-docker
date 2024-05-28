@@ -1,9 +1,11 @@
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
+    <property name="SYSLOG-ADDRESS" value="${DOCKER-COMPOSE-SYSLOG-ADDRESS}"/>
+    <property name="SYSLOG-PORT" value="${DOCKER-COMPOSE-SYSLOG-PORT}"/>
 
     <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
-        <syslogHost>192.168.0.33</syslogHost>
+        <syslogHost>${SYSLOG-ADDRESS}</syslogHost>
         <facility>LOCAL0</facility>
-        <port>514</port>
+        <port>${SYSLOG-PORT}</port>
         <throwableExcluded>true</throwableExcluded>
         <suffixPattern>catalog-service %m thread:%t priority:%p category:%c exception:%exception</suffixPattern>
     </appender>
