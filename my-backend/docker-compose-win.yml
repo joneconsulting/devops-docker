@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  my-backend:
+    image: edowon0623/catalog-service:syslog-ng-v1.3
+    environment: 
+      - spring.datasource.url=jdbc:mariadb://my-db:3306/mydb
+      - spring.datasource.password=
+      - DOCKER-COMPOSE-SYSLOG-ADDRESS=192.168.0.7
+      - DOCKER-COMPOSE-SYSLOG-PORT=514
+    ports:
+      - 8088:8088
+    depends_on:
+      - my-db
+    networks:
+      - my-network
+
+  my-db:
+    image: mariadb:latest
+    environment: 
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
+      - MARIADB_DATABASE=mydb
+    ports:
+      - 13306:3306
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true
