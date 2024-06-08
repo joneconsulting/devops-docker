@@ -1,6 +1,6 @@
 1. CA Certificates
 ```
-openssl genrsa -out server.key 4096
+openssl genrsa -out ca.key 4096
 openssl req -x509 -new -nodes -sha512 -days 365 -key ca.key -out ca.crt
 ```
 
