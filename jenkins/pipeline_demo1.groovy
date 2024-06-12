@@ -1,12 +1,11 @@
 pipeline {
   agent none
+  tools {
+      maven "Maven3.9.5"
+  }
   stages {
     stage('Maven Install') {
-      agent {
-        docker {
-          image 'maven:3.9.5'
-        }
-      }
+      agent any
       steps {
         git branch: 'main', url: 'https://github.com/joneconsulting/cicd-web-project'
         sh 'mvn clean compile package -DskipTests=true'
