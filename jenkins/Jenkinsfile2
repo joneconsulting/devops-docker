@@ -41,7 +41,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'harbor-user', url: 'https://192.168.0.41') {
-          sh 'docker push 192.168.0.41/devops/cicd-web-project:$BUILD_NUMBER'
+          sh 'docker push 192.168.0.41/devops/cicd-web-project:' + imageTag
         }
       }
     }
