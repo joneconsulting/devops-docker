@@ -31,7 +31,7 @@ pipeline {
           }
                     
           // sh 'docker build -t 192.168.0.41/devops/cicd-web-project:$BUILD_NUMBER .'
-          sh 'docker build -t 192.168.0.41/devops/cicd-web-project:' + imageTag + ' .'
+          sh 'docker build -t 192.168.0.33/devops/cicd-web-project:' + imageTag + ' .'
       }
     }
     stage('Docker Push') {
@@ -40,8 +40,8 @@ pipeline {
         expression { params.DOCKER_PUSH == true }
       }
       steps {
-        withDockerRegistry(credentialsId: 'harbor-user', url: 'https://192.168.0.41') {
-          sh 'docker push 192.168.0.41/devops/cicd-web-project:' + imageTag
+        withDockerRegistry(credentialsId: 'harbor-user', url: 'https://192.168.0.33') {
+          sh 'docker push 192.168.0.33/devops/cicd-web-project:' + imageTag
         }
       }
     }
