@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   my-db:
     platform: linux/amd64 # for apple chip
@@ -9,7 +9,8 @@ services:
     ports:
       - 13306:3306
     volumes: 
-      - C:\work\git\docker-examples\docker-compose\data:/var/lib/mysql # shared folder
+      # - C:\work\git\docker-examples\docker-compose\data:/var/lib/mysql # shared folder
+      - /Users/edowon/Desktop/Work/14.online/devops-docker/docker-compose/data:/var/lib/mysql
     networks:
       - my-network
 
