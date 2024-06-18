@@ -1,4 +1,4 @@
-1. 설치
+1. 설치파일 다운로드
 ```
 wget https://github.com/goharbor/harbor/releases/download/v2.2.2/harbor-offline-installer-v2.2.2.tgz
 ```
@@ -12,4 +12,12 @@ cp harbor.yml.tmpl harbor.yml
 ```
 ```
 vi harbor.yml
+```
+
+3. 설치 실행
+```
+./prepare
+```
+```
+./insta..sh
 ```

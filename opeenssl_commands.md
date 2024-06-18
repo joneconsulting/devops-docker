@@ -1,3 +1,9 @@
+0. Make a dir
+```
+mkdir ~/certs
+mkdir ~/harbor
+```
+
 1. CA Certificates
 ```
 openssl genrsa -out ca.key 4096
