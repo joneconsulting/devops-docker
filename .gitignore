@@ -1,0 +1,7 @@
+.vscode/
+docker-compose/data/
+my-backend/target/
+.idea/
+my-frontend/node_modules/
+my-frontend/build/
+
